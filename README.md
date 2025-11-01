@@ -166,7 +166,9 @@ Ensure you have a valid Anthropic account and API access. Check your network con
 Verify that the aks-mcp-server is included in the environment by running `flox list`. If missing, try pulling the environment again.
 
 ## Additional Resources
-
+- [AKS MCP](https://github.com/Azure/aks-mcp)
+- [AKS MCP Nix Package PR](https://github.com/NixOS/nixpkgs/pull/443662)
+- [AKS MCP Engineering Blog](https://blog.aks.azure.com/2025/08/20/real-time-observability-in-aks-mcp-server)
 - [Flox Documentation](https://flox.dev/docs)
 - [Model Context Protocol (MCP)](https://modelcontextprotocol.io/)
 - [Azure AKS Documentation](https://learn.microsoft.com/en-us/azure/aks/)
