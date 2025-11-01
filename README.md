@@ -2,6 +2,8 @@
 
 Transform your Azure Cloud Shell into an intelligent debugging companion for Azure Kubernetes Service (AKS) using Flox environments, the aks-mcp-server, and Claude Code.
 
+![alt text](./imgs/aks-mcp.gif)
+
 ## Overview
 
 This guide walks you through setting up a powerful debugging environment that combines:
