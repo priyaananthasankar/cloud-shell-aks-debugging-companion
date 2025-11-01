@@ -11,21 +11,22 @@ This guide walks you through setting up a powerful debugging environment that co
 
 ## Prerequisites
 
-- Access to Azure Cloud Shell
-- Azure subscription with AKS clusters
+- An Azure Subscription:
+    - With access to Azure Cloud Shell
+    - With access to AKS clusters 
 
 ## Setup Instructions
 
 ### Step 0: Install Flox in Cloud Shell
 
-First, install Flox using the installation script in Cloud Shell:
+First, launch Azure Cloud Shell and.install Flox using the installation script:
 
 1. Create the installation script:
 ```bash
 curl -o install-flox.sh https://gist.githubusercontent.com/stealthybox/4511dcb77351e2636321aa860b5e3618/raw
 ```
 
-2. Make it executable and run it:
+2. Make it executable and run it in Cloud Shell terminal.
 ```bash
 chmod +x install-flox.sh
 ./install-flox.sh
@@ -33,12 +34,14 @@ chmod +x install-flox.sh
 
 3. **Important**: Relaunch Cloud Shell
 
+![alt text](./imgs/image.png)
+
 ### Step 1: Pull the Flox Environment
 
 Pull the pre-configured `aksmcpenvironment` from FloxHub:
 
 ```bash
-flox pull priyaananthasankar/aksmcpenvironment
+flox pull priyaananthasankar/aksmcpenvironment --force
 ```
 
 ### Step 2: Activate the Environment
@@ -46,10 +49,12 @@ flox pull priyaananthasankar/aksmcpenvironment
 Activate the Flox environment:
 
 ```bash
-flox activate -r priyaananthasankar/aksmcpenvironment
+flox activate
 ```
 
 Your shell prompt should change to indicate the active environment.
+
+![alt text](./imgs/image-1.png)
 
 ### Step 3: Verify Installation
 
@@ -59,7 +64,32 @@ List the packages and tools included in the environment:
 flox list
 ```
 
+![alt text](./imgs/image-2.png)
+
 This will show you all the tools available in your debugging environment, including the aks-mcp-server and Claude Code.
+
+#### Setup Claude MCP Config
+
+`mkdir  .claude/mcp_config.json`
+
+#### Add these lines to mcp_config.json
+
+```
+{
+  "mcpServers": {
+    "aks-mcp": {
+      "command": "aks-mcp",
+      "args": [
+        "--transport", "stdio",
+        "--access-level", "readonly"
+      ],
+      "env": {
+        "AZURE_SUBSCRIPTION_ID": "<ENTER YOUR AZURE SUBSCRIPTION ID>"
+      }
+    }
+  }
+}
+```
 
 ### Step 4: Launch Claude Code
 
@@ -73,13 +103,35 @@ Follow the authentication prompts to sign in with your Anthropic account.
 
 ### Step 5: Connect to AKS MCP Server
 
-Once Claude Code is running, instruct it to connect to the aks-mcp-server:
+Once Claude Code is running, instruct it to start the aks-mcp-server by saying:
 
-```
-Run aks-mcp server in stdio mode
-```
+`start aks mcp server using ~/.claude/mcp_config.json` 
 
-Claude will now have access to AKS-specific tools and can help you debug your Kubernetes clusters intelligently.
+**Note: Being explicit with the agent stops it from going all over the place figuring out how to start the MCP server**
+
+![alt text](./imgs/image-3.png)
+
+![alt text](./imgs/image-4.png)
+
+Use `claude mcp list` to verify (or) `/mcp` to see if aks-mcp is connected, see below:
+
+![alt text](./imgs/image-5.png)
+
+Now restart Claude 
+
+**Note: This is Claude's requirement that it will load mcp tools only on restart**
+
+Once restarted
+
+![alt text](./imgs/image-6.png)
+
+Now you can use natural language. You will see MCP tools being run as seen below. The green dot on the left indicates it ran the tool successfully.
+
+![alt text](./imgs/image-7.png)
+
+## Speak in natural language
+
+![alt text](./imgs/image-8.png)
 
 ## What You Can Do
 
