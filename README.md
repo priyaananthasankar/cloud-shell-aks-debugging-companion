@@ -131,6 +131,8 @@ Now you can use natural language. You will see MCP tools being run as seen below
 
 ## Speak in natural language
 
+`List all pods in default namespace`
+
 ![alt text](./imgs/image-8.png)
 
 ## What You Can Do
