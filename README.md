@@ -150,7 +150,7 @@ With this setup, you can:
 Try asking Claude:
 - "Show me all pods in the default namespace"
 - "What's wrong with my failing deployment?"
-- "Check the logs for the nginx pod"
+- "Check the logs for the <name> pod"
 - "List all services across all namespaces"
 - "Help me troubleshoot why my pod is in CrashLoopBackOff"
 
