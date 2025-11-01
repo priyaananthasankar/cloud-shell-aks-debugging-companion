@@ -11,9 +11,11 @@ This guide walks you through setting up a powerful debugging environment that co
 
 ## Prerequisites
 
+- Knowledge of Kubernetes and AKS. Make sure an AKS cluster is setup in your Azure Subscription.
+- Claude Account
 - An Azure Subscription:
     - With access to Azure Cloud Shell
-    - With access to AKS clusters 
+    - With access to AKS clusters
 
 ## Setup Instructions
 
