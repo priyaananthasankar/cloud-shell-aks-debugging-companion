@@ -23,7 +23,7 @@ This guide walks you through setting up a powerful debugging environment that co
 
 ### Step 0: Install Flox in Cloud Shell
 
-First, launch Azure Cloud Shell and.install Flox using the installation script:
+First, launch Azure Cloud Shell and install Flox using the installation script:
 
 1. Create the installation script:
 ```bash
@@ -74,9 +74,14 @@ This will show you all the tools available in your debugging environment, includ
 
 #### Setup Claude MCP Config
 
-`mkdir  .claude/mcp_config.json`
+```bash
+mkdir .claude
+touch mcp_config.json
+```
 
 #### Add these lines to mcp_config.json
+
+Be sure to add your Azure Subscription ID in the `env` variable
 
 ```
 {
